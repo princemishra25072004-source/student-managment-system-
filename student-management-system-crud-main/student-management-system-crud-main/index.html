@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student CRUD System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: black;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 60px;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 80%;
+            padding: 6px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add { background: green; }
+        .view { background: blue; }
+        .delete { background: red; }
+        .update { background: orange; }
+
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        
+        table {
+    width: 70%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #333;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+        
+        
+    </style>
+</head>
+
+<body>
+
+<h1>Student CRUD System</h1>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Add Student</h3>
+        <form action="/add" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <button class="add">Add</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>View Students</h3>
+        <a href="/view">
+            <button class="view">View All</button>
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>Delete Student</h3>
+        <form action="/delete" method="POST">
+            <input type="number" name="id" placeholder="ID" required>
+            <button class="delete">Delete</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Update Student</h3>
+        <form action="/update" method="POST">
+            <input type="number" name="id" placeholder="ID" required>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <button class="update">Update</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

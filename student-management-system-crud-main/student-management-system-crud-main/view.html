@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Students</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: black;
+        }
+
+        /* CENTER CONTAINER */
+        .table-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* TABLE DESIGN */
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: black;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #dff9fb;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📋 Student Data</h2>
+
+<div class="table-container">
+    <table id="dataTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+    </table>
+</div>
+
+<a href="/">GO BACK</a>
+
+<script>
+fetch("/data")
+.then(res => res.json())
+.then(data => {
+
+    let table = document.getElementById("dataTable");
+
+    data.forEach(row => {
+        let tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${row.id}</td>
+            <td>${row.name}</td>
+            <td>${row.email}</td>
+            <td>${row.age}</td>
+        `;
+
+        table.appendChild(tr);
+    });
+
+})
+.catch(err => console.log("Error:", err));
+</script>
+
+</body>
+</html>
